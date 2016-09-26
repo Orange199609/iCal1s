@@ -9,6 +9,7 @@ public class Basic extends JFrame implements ActionListener
 {
 	double memory;
 	double result=0,now=0;         //记录最终答案和过程中的答案
+	public double num = 0;                //记录指数以及对数运算的底数
 	int nDot=0;			           //总共有多少小数
 	int operation=1;               //1~4分别代表加减乘除；
 	boolean reBuild=false;         //重新输入数据
@@ -21,7 +22,7 @@ public class Basic extends JFrame implements ActionListener
 	String mStr="0";
 	private JTextField text,mem;
 	private JButton b1,b2,b3,b4,b5,b6,b7,b8,b9,b0;
-	private JButton bBackspace,bCe,bC,bSqrt,bPercent,bReciprocal,bEqual,bMul,bDiv,bPlus,bMinus,bDot,bNev;
+	private JButton bBackspace,bCe,bC,bSqrt,bPercent,bReciprocal,bEqual,bMul,bDiv,bPlus,bMinus,bDot,bNev,bSin,bCos,bPow,bLog;
 	private JButton bMC,bMR,bMS,bM;
 	public Basic()
 	{
@@ -38,10 +39,10 @@ public class Basic extends JFrame implements ActionListener
 		text.setEditable(false);
 		text.setText("0.");
 		JPanel p1=new JPanel(new GridLayout(1,4,3,3));
-		JPanel p2=new JPanel(new GridLayout(1,6,3,3));
-		JPanel p3=new JPanel(new GridLayout(1,6,3,3));
-		JPanel p4=new JPanel(new GridLayout(1,6,3,3));
-		JPanel p5=new JPanel(new GridLayout(1,6,3,3));
+		JPanel p2=new JPanel(new GridLayout(1,7,3,3));
+		JPanel p3=new JPanel(new GridLayout(1,7,3,3));
+		JPanel p4=new JPanel(new GridLayout(1,7,3,3));
+		JPanel p5=new JPanel(new GridLayout(1,7,3,3));
 		//--------实例化所有按钮---------
 		
 		bBackspace=new JButton("Backspace");
@@ -167,6 +168,26 @@ public class Basic extends JFrame implements ActionListener
 		bReciprocal.setFont(font);
 		bReciprocal.setForeground(Color.blue);
 		bReciprocal.addActionListener(this);
+		
+		bSin=new JButton("sin");
+		bSin.setFont(font);
+		bSin.setForeground(Color.blue);
+		bSin.addActionListener(this);
+		
+		bCos=new JButton("cos");
+		bCos.setFont(font);
+		bCos.setForeground(Color.blue);
+		bCos.addActionListener(this);
+		
+		bPow=new JButton("^");
+		bPow.setFont(font);
+		bPow.setForeground(Color.blue);
+		bPow.addActionListener(this);
+		
+		bLog=new JButton("log");
+		bLog.setFont(font);
+		bLog.setForeground(Color.blue);
+		bLog.addActionListener(this);
 		//---------------------------------------------------------
 		mem=new JTextField(4);
 		mem.setHorizontalAlignment(JTextField.CENTER); 
@@ -180,24 +201,28 @@ public class Basic extends JFrame implements ActionListener
 		p2.add(b8);
 		p2.add(b9);
 		p2.add(bDiv);
+		p2.add(bSin);
 		p2.add(bSqrt);
 		p3.add(bMR);
 		p3.add(b4);
 		p3.add(b5);
 		p3.add(b6);
 		p3.add(bMul);
+		p3.add(bCos);
 		p3.add(bPercent);
 		p4.add(bMS);
 		p4.add(b1);
 		p4.add(b2);
 		p4.add(b3);
 		p4.add(bMinus);
+		p4.add(bPow);
 		p4.add(bReciprocal);
 		p5.add(bM);
 		p5.add(b0);
 		p5.add(bNev);
 		p5.add(bDot);
 		p5.add(bPlus);
+		p5.add(bLog);
 		p5.add(bEqual);
 		this.add(text);
 		this.add(p1);
@@ -477,7 +502,7 @@ public class Basic extends JFrame implements ActionListener
 					case 1:this.result+=this.now;break;
 					case 2:this.result-=this.now;break;
 					case 3:this.result*=this.now;break;
-					default:
+					case 4:
 					if(this.now==0)
 					{
 						text.setText("错误：除数不能为零   ");
@@ -487,6 +512,33 @@ public class Basic extends JFrame implements ActionListener
 					{
 						this.result/=this.now;
 					}
+					case 5:
+					{
+						if(this.result == 0)
+						{
+							text.setText("错误：底数不能为零   ");
+							this.input=false;
+						}
+						else
+						{
+							this.result = Math.pow(this.result,this.now);
+	                        break;
+						}
+					}
+					default:
+					{
+						if(this.result == 0 || this.now == 0)
+						{
+							text.setText("错误：底数或真数不能为零");
+							this.input=false;
+						}
+						else 
+						{
+							this.result = Math.log(this.now)/Math.log(this.result);
+			            }
+				 
+					}
+					
 				}
 				if(this.input)text.setText(Double.toString(this.result));
 				this.wait=false;
@@ -495,7 +547,92 @@ public class Basic extends JFrame implements ActionListener
                 this.opera=false;
 			}
 		}
-	}
+		
+		//--------- 处理三角函数 --------------------
+		if(this.input&&(e.getSource()==bSin||e.getSource()==bCos))
+		{
+			double rad = Math.toRadians(this.now);//将角度转换为弧度
+			
+			if(!this.reBuild)
+			{
+				if(e.getSource()== bSin) this.result = Math.sin(rad);
+				if(e.getSource()== bCos) this.result = Math.cos(rad);
+				this.text.setText(Double.toString(this.now));
+				if(this.input)text.setText(Double.toString(this.result));
+			}
+			else
+			{
+				if(!this.reBuild) this.result=this.now;
+			}
+			this.opera=true;
+			this.simple=false;
+	    }
+		
+		//--------- 处理指数函数 --------------------
+		if(this.input&&(e.getSource()== bPow))
+		{
+			if(this.wait&&this.opera)
+			{
+				if(this.now == 0)
+				{
+					text.setText("错误：底数不能为零   ");
+					this.input=false;
+				}
+				else
+				{
+					this.result = this.now;
+				}
+				if(this.input)text.setText(Double.toString(this.result));
+				this.now=0;
+				this.str="0";
+				this.nDot=0;
+				this.wait=false;
+			}
+			else
+			{
+				if(!this.reBuild)this.result=this.now;
+				this.now=0;
+				this.str="0";
+				this.nDot=0;
+				this.wait=false;
+			}
+			if(e.getActionCommand().equals("^"))this.operation=5;
+			this.opera=true;
+			this.simple=false;
+		}
+
+		//--------- 处理对数函数 --------------------
+		if(this.input&&(e.getSource()== bLog)){
+			if(this.wait&&this.opera)
+			{
+				if(this.now == 0)
+				{
+					text.setText("错误：底数不能为零   ");
+					this.input=false;
+				}
+				else
+				{
+					this.result = this.now;
+				}
+				if(this.input)text.setText(Double.toString(this.result));
+				this.now=0;
+				this.str="0";
+				this.nDot=0;
+				this.wait=false;
+			}
+			else
+			{
+				if(!this.reBuild)this.result=this.now;
+				this.now=0;
+				this.str="0";
+				this.nDot=0;
+				this.wait=false;
+			}
+			if(e.getActionCommand().equals("log"))this.operation=6;
+			this.opera=true;
+			this.simple=false;
+		}
+	    }
 
 	
 }
