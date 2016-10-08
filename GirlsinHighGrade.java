@@ -28,6 +28,7 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 	double height,weight,lungcontent,fiftymeters1,fiftymeters2,sittingpush,jump,pullup,eighthundredmeters1,eighthundredmeters2,major,total,test;
     double BMIgrade,lungcontentgrade,fiftymetersgrade,sittingpushgrade,jumpgrade,pullupgrade,eighthundredmetersgrade,skippingropegrade,BMI;
     String s = new String("");
+    Font font = new Font("华文行楷",Font.BOLD,16);
     
 	public GirlsinHighGrade(){
 		super("大三大四女生体测成绩计算");
@@ -53,8 +54,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		pheight.setLayout(new GridLayout(1,3));
 		pleft.add(pheight);
 		labelheight1 = new JLabel("身高");
+		labelheight1.setFont(font);
 		textheight = new JTextField(10);
 		labelheight2 = new JLabel("m");
+		labelheight2.setFont(font);
 		pheight.add(labelheight1);
 		pheight.add(textheight);
 		pheight.add(labelheight2);
@@ -63,8 +66,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		pweight.setLayout(new GridLayout(1,3));
 		pleft.add(pweight);
 		labelweight1 = new JLabel("体重");
+		labelweight1.setFont(font);
 		textweight = new JTextField(10);
 		labelweight2 = new JLabel("kg");
+		labelweight2.setFont(font);
 		pweight.add(labelweight1);
 		pweight.add(textweight);
 		pweight.add(labelweight2);
@@ -73,8 +78,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		plungcontent.setLayout(new GridLayout(1,3));
 		pleft.add(plungcontent);
 		labellungcontent1 = new JLabel("肺活量");
+		labellungcontent1.setFont(font);
 		textlungcontent = new JTextField(10);
 		labellungcontent2 = new JLabel("ml");
+		labellungcontent2.setFont(font);
 		plungcontent.add(labellungcontent1);
 		plungcontent.add(textlungcontent);
 		plungcontent.add(labellungcontent2);
@@ -83,10 +90,13 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		pfiftymeters.setLayout(new GridLayout(1,4));
 		pleft.add(pfiftymeters);
 		labelfiftymeters1 = new JLabel("50米");
+		labelfiftymeters1.setFont(font);
 		textfiftymeters1 = new JTextField(1);
 		labelfiftymeters2 = new JLabel("秒");
+		labelfiftymeters2.setFont(font);
 		textfiftymeters2 = new JTextField(1);
 		labelblank = new JLabel("");
+		labelblank.setFont(font);
 		pfiftymeters.add(labelfiftymeters1);
 		pfiftymeters.add(textfiftymeters1);
 		pfiftymeters.add(labelfiftymeters2);
@@ -97,8 +107,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		psittingpush.setLayout(new GridLayout(1,3));
 		pleft.add(psittingpush);
 		labelsittingpush1 = new JLabel("坐位体前屈");
+		labelsittingpush1.setFont(font);
 		textsittingpush = new JTextField(3);
 		labelsittingpush2 = new JLabel("cm");
+		labelsittingpush2.setFont(font);
 		psittingpush.add(labelsittingpush1);
 		psittingpush.add(textsittingpush);
 		psittingpush.add(labelsittingpush2);
@@ -107,8 +119,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		pjump.setLayout(new GridLayout(1,3));
 		pleft.add(pjump);
 		labeljump1 = new JLabel("立定跳远");
+		labeljump1.setFont(font);
 		textjump = new JTextField(10);
 		labeljump2 = new JLabel("cm");
+		labeljump2.setFont(font);
 		pjump.add(labeljump1);
 		pjump.add(textjump);
 		pjump.add(labeljump2);
@@ -117,8 +131,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		ppullup.setLayout(new GridLayout(1,3));
 		pleft.add(ppullup);
 		labelpullup1 = new JLabel("仰卧起坐");
+		labelpullup1.setFont(font);
 		textpullup = new JTextField(10);
 		labelpullup2 = new JLabel("个");
+		labelpullup2.setFont(font);
 		ppullup.add(labelpullup1);
 		ppullup.add(textpullup);
 		ppullup.add(labelpullup2);
@@ -127,10 +143,13 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		peighthundredmeters.setLayout(new GridLayout(1,5));
 		pleft.add(peighthundredmeters);
 		labeleighthundredmeters1 = new JLabel("800米耐力跑");
+		labeleighthundredmeters1.setFont(font);
 		texteighthundredmeters1 = new JTextField(1);
 		labeleighthundredmeters2 = new JLabel("分");
+		labeleighthundredmeters2.setFont(font);
 		texteighthundredmeters2 = new JTextField(1);
 		labeleighthundredmeters3 = new JLabel("秒");
+		labeleighthundredmeters3.setFont(font);
 		peighthundredmeters.add(labeleighthundredmeters1);
 		peighthundredmeters.add(texteighthundredmeters1);
 		peighthundredmeters.add(labeleighthundredmeters2);
@@ -141,8 +160,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		pmajor.setLayout(new GridLayout(1,3));
 		pleft.add(pmajor);
 		labelmajor1 = new JLabel("专项课得分");
+		labelmajor1.setFont(font);
 		textmajor = new JTextField(10);
 		labelmajor2 = new JLabel("分");
+		labelmajor2.setFont(font);
 		pmajor.add(labelmajor1);
 		pmajor.add(textmajor);
 		pmajor.add(labelmajor2);
@@ -151,8 +172,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		pskippingrope.setLayout(new GridLayout(1,3));
 		pleft.add(pskippingrope);
 		labelskippingrope1 = new JLabel("跳绳得分");
+		labelskippingrope1.setFont(font);
 		textskippingrope = new JTextField(10);
 		labelskippingrope2 = new JLabel("分");
+		labelskippingrope2.setFont(font);
 		pskippingrope.add(labelskippingrope1);
 		pskippingrope.add(textskippingrope);
 		pskippingrope.add(labelskippingrope2);
@@ -161,8 +184,10 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		ptest.setLayout(new GridLayout(1,3));
 		pleft.add(ptest);
 	    labeltest1 = new JLabel("体侧得分");
+	    labeltest1.setFont(font);
 	    texttest = new JTextField(10);
 	    labeltest2 = new JLabel("分");
+	    labeltest2.setFont(font);
 	    ptest.add(labeltest1);
 	    ptest.add(texttest);
 	    ptest.add(labeltest2);
@@ -171,13 +196,16 @@ public class GirlsinHighGrade extends JFrame implements ActionListener{
 		ptotal.setLayout(new GridLayout(1,3));
 		pleft.add(ptotal);
 		labeltotal1 = new JLabel("总分");
+		labeltotal1.setFont(font);
 		texttotal = new JTextField(10);
 		labeltotal2 = new JLabel("分");
+		labeltotal2.setFont(font);
 		ptotal.add(labeltotal1);
 		ptotal.add(texttotal);
 		ptotal.add(labeltotal2);
 		/*右侧布局*/
 		counting = new JButton("计算得分");
+		counting.setFont(font);
 		counting.addActionListener(this);
 		pright.add(counting);
 		

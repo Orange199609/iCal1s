@@ -23,7 +23,7 @@ import java.util.Calendar;
 
 public class TaxiAppComparison extends JFrame implements ActionListener{
 	
-     JButton Counting = new JButton("计算价格");    //计算价格按钮
+     JButton Counting;    //计算价格按钮
      JPanel  p1,p2,p3,p4,p5,p6;                  //创建6个面板
      JTextField text1,text2,text3,text4;         //创建4个文本框
      JLabel  label1,label2,label3,label4;        //创建3个标签
@@ -36,6 +36,7 @@ public class TaxiAppComparison extends JFrame implements ActionListener{
      String  total2 = new String("");
      Calendar c = Calendar.getInstance();
      int hour = c.get(Calendar.HOUR_OF_DAY);
+     Font font = new Font("华文行楷",Font.BOLD,16);
      
      public TaxiAppComparison(){
     	 
@@ -54,7 +55,9 @@ public class TaxiAppComparison extends JFrame implements ActionListener{
  		 p3 = new JPanel();
  		 p3.setLayout(new GridLayout(1,2));
  		 p1.add(p3);
+ 		 
  		 label1 = new JLabel("公里数/km");
+ 		 label1.setFont(font);
  		 p3.add(label1);
  		 text1 = new JTextField(12);
  		 p3.add(text1);
@@ -63,6 +66,7 @@ public class TaxiAppComparison extends JFrame implements ActionListener{
 		 p4.setLayout(new GridLayout(1,2));
 		 p1.add(p4);
 		 label2 = new JLabel("预估拥堵指数(0-10)");
+		 label2.setFont(font);
 		 p4.add(label2);
 		 text2 = new JTextField(12);
 		 p4.add(text2);
@@ -71,6 +75,7 @@ public class TaxiAppComparison extends JFrame implements ActionListener{
  		 p5.setLayout(new GridLayout(1,2));
  		 p1.add(p5);
  		 label3 = new JLabel("Uber预计价格");
+ 		 label3.setFont(font);
  		 p5.add(label3);
  		 text3 = new JTextField(12);
  		 p5.add(text3);
@@ -79,10 +84,13 @@ public class TaxiAppComparison extends JFrame implements ActionListener{
 		 p6.setLayout(new GridLayout(1,2));
 		 p1.add(p6);
 		 label4 = new JLabel("滴滴预估价格");
+		 label4.setFont(font);
 		 p6.add(label4);
 		 text4 = new JTextField(12);
 		 p6.add(text4);
 		 
+		 JButton Counting = new JButton("计算价格");
+		 Counting.setFont(font);
 		 Counting.addActionListener(this);
 		 p2.add(Counting);
 		 this.setVisible(true);

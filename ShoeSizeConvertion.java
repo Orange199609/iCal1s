@@ -3,6 +3,7 @@ package iCalculator;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,6 +26,7 @@ public class ShoeSizeConvertion extends JFrame implements ActionListener{
 	double   y;                        //记录输入的数据
 	String s = new String("");
 	String c = new String("");
+	Font font = new Font("华文行楷",Font.BOLD,16);
 	
 	public ShoeSizeConvertion(){
 		super("鞋码换算");
@@ -44,14 +46,32 @@ public class ShoeSizeConvertion extends JFrame implements ActionListener{
 		p6.setLayout(new GridLayout(1,2));
 		
 		text1 = new JTextField(12);
+		text1.setFont(font);
+		
 		text2 = new JTextField(12);
+		text2.setFont(font);
+		
 		text3 = new JTextField(12);
+		text3.setFont(font);
+		
 		bcoversing = new JButton("转换");
+		bcoversing.setFont(font);
+		
 		bpoint = new JButton(".");
+		bpoint.setFont(font);
+		
 		bbackspace = new JButton("退格");
+		bbackspace.setFont(font);
+		
 		Label1 = new JLabel("脚长/cm");
+		Label1.setFont(font);
+		
 		Label2 = new JLabel("对应男士欧码");
+		Label2.setFont(font);
+		
 		Label3 = new JLabel("对应女士欧码");
+		Label3.setFont(font);
+		
 		this.setVisible(true);
 		
 		/*设置p1 panel*/
@@ -69,14 +89,17 @@ public class ShoeSizeConvertion extends JFrame implements ActionListener{
 		/*设置p2 panel*/
 		for(int i=0;i<=8;i++){
 			b[i] = new JButton(Integer.toString(i+1));
+			b[i].setFont(font);
 			p2.add(b[i]);
 			b[i].addActionListener(this);
 		}
 		b[9] = new JButton("0");
+		b[9].setFont(font);
 		p2.add(b[9]);
 		b[9].addActionListener(this);
 		p2.add(bpoint);
 		bbackspace = new JButton("退格");
+		bbackspace.setFont(font);
 		p2.add(bbackspace);
 		bbackspace.addActionListener(this);
 		bpoint.addActionListener(this);
